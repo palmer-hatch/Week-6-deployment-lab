@@ -8,7 +8,7 @@ app.use(express.json())
 
 //Middleware
 app.use(express.static(path.join(__dirname, "../public")))
-app.use(express.static(path.join(__dirname, "../public/index.css")))
+app.use('/css',express.static(path.join(__dirname, "../public/index.css")))
 
 //Heroku port
 const port = process.env.PORT || 4005
