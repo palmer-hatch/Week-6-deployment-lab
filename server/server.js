@@ -18,9 +18,20 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 
+app.get('/', (req, res) => {
+    rollbar.info("html served successful")
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
+
+
 
 //Middleware
 app.use(express.static(path.join(__dirname, "../public")))
+
+
+
+app.use(rollbar.errorHandler())
+
 
 
 //Heroku port
